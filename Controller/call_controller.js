@@ -66,9 +66,6 @@ require('dotenv').config();
 const twilio = require('twilio');
 const pool = require('../database'); 
 
-
-// const accountSid = 'ACdf4ba05ef5adb53e74a42326247a2c9b';
-// const authToken = '1ff607332c1eb6d9825a306d52f70a00';
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 console.log("Twilio Account SID:", process.env.TWILIO_ACCOUNT_SID);  // Debugging log
