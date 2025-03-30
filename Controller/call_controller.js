@@ -103,8 +103,10 @@ const extract_call_details = async () => {
             FROM signup su
             JOIN schedule sc ON su.emailid = sc.email
             WHERE sc.date = current_date
-            AND sc.time <= current_time + interval '1 hour'
-            AND sc.time > current_time
+            //AND sc.time <= current_time + interval '1 hour'//not these two
+            // AND sc.time > current_time //test if u want anytime n not exactly 1 hr prior
+            AND sc.time BETWEEN current_time + interval '59 minutes' 
+            AND current_time + interval '61 minutes'
             AND sc.called = false
         `);
         console.log(`One-hour prior calls to be made: ${oneHourDetails.rows.length}`);
@@ -161,8 +163,10 @@ const extract_call_details = async () => {
             FROM signup su
             JOIN schedule sc ON su.emailid = sc.email
             WHERE sc.date = current_date
-            AND sc.time <= current_time + interval '30 minutes'
-            AND sc.time > current_time
+           // AND sc.time <= current_time + interval '30 minutes'//same here also
+           // AND sc.time > current_time//
+            AND sc.time BETWEEN current_time + interval '59 minutes' 
+            AND current_time + interval '61 minutes'
             AND sc.reminder_30 = false
         `);
 
